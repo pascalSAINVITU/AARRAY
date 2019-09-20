@@ -15,7 +15,7 @@
         if (!$l) bounce ("Need 'list = <list_name>'!");
 
         $l_owner = var[$l||"_owner"] otherwise trigger.address;
-        $l_count = var[$l||"_count"] otherwise 0;
+        $l_count = var[$l||"_count"] otherwise -1;
         $l_linked = var[$l||"_linked"] otherwise $i.linked;
         $l_public = var[$l||"_public"] otherwise $i.public;
     }",
@@ -77,7 +77,7 @@
                         bounce ("'"||$i.list_name||"' did not exist !");
                     if (trigger.address != var[$l])
                         bounce ("Must be owner to remove last entry of the list");
-                    if (var[$l||"_count"] == 0)
+                    if (var[$l||"_count"] == -1)
                         bounce ("List is empty!");
                     }",
                 "messages": [
